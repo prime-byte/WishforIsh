@@ -3,524 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Year 2026 | Magical Transition</title>
+    <title>From 2025 With Gratitude, Into 2026 With Hope</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== CSS RESET & VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        
-        :root {
-            --primary-gold: #ffd700;
-            --primary-pink: #ff6b8b;
-            --primary-blue: #4dccff;
-            --primary-purple: #9d70ff;
-            --primary-green: #70ff9d;
-            --bg-dark: #0a0a1a;
-            --bg-darker: #050510;
-            --bg-gradient-2025: linear-gradient(135deg, #050510 0%, #0a0a1a 30%, #1a1a3a 100%);
-            --bg-gradient-2026: linear-gradient(135deg, #0f0030 0%, #2a0066 30%, #4d00b3 100%);
-            --text-light: #f0f8ff;
-            --text-muted: #a3d9ff;
-            --spacing-xs: 10px;
-            --spacing-sm: 20px;
-            --spacing-md: 40px;
-            --spacing-lg: 60px;
-            --spacing-xl: 80px;
-            --border-radius: 20px;
-            --transition-slow: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-medium: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-            --transition-fast: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        /* ===== BASE STYLES ===== */
-        html {
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-gradient-2025);
-            color: var(--text-light);
-            min-height: 100vh;
+            background-color: #0a0a1a;
+            color: #f0f0f0;
             overflow-x: hidden;
-            position: relative;
-            transition: background var(--transition-slow);
+            line-height: 1.6;
         }
         
-        body.new-year-transition {
-            background: var(--bg-gradient-2026);
-        }
-        
-        /* ===== LAYOUT CONTAINERS ===== */
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: var(--spacing-md);
-            position: relative;
-            z-index: 10;
+            padding: 0 20px;
         }
         
-        .page-section {
+        /* Opening Scene */
+        .section {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
         }
         
-        /* ===== PAGE TRANSITION SYSTEM ===== */
-        .pre-transition {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity var(--transition-slow), transform var(--transition-slow);
+        #opening-scene {
+            background: linear-gradient(to bottom, #0a0a1a, #000000);
+            text-align: center;
         }
         
-        .post-transition {
-            opacity: 0;
-            transform: translateY(100vh);
-            position: fixed;
+        .stars {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow-y: auto;
-            pointer-events: none;
-            z-index: 5;
-            transition: opacity var(--transition-slow), transform var(--transition-slow);
+            z-index: 1;
         }
         
-        body.transition-active .pre-transition {
-            opacity: 0;
-            transform: translateY(-100vh);
-            pointer-events: none;
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
         }
         
-        body.transition-active .post-transition {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: all;
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .opening-text {
             position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
         }
         
-        /* ===== HEADER STYLES ===== */
-        .header-container {
-            text-align: center;
-            padding: var(--spacing-xl) 0 var(--spacing-lg);
-            position: relative;
-            z-index: 20;
-        }
-        
-        .main-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 900;
-            margin-bottom: var(--spacing-sm);
-            background: linear-gradient(135deg, var(--primary-gold), var(--primary-pink), var(--primary-blue));
+        .opening-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #a8c0ff, #ffdde1);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-            letter-spacing: 1px;
-            line-height: 1.1;
+            font-weight: 300;
+            line-height: 1.3;
         }
         
-        .subtitle {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--text-muted);
-            margin-top: var(--spacing-sm);
+        .opening-text p {
+            font-size: 1.5rem;
+            color: #b0b0ff;
             opacity: 0;
-            animation: fadeInUp 1.5s 0.5s forwards;
+            animation: fadeInUp 1.5s forwards 1s;
         }
         
-        /* ===== YEAR DISPLAY ===== */
-        .year-container {
-            text-align: center;
-            margin: var(--spacing-lg) 0;
-            position: relative;
-        }
-        
-        .year-display {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(6rem, 15vw, 12rem);
-            font-weight: 900;
-            color: var(--primary-gold);
-            text-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
-            margin: 0;
-            line-height: 1;
-            position: relative;
-            display: inline-block;
-            transition: all var(--transition-slow);
-        }
-        
-        .year-display.new-year {
-            color: var(--primary-blue);
-            text-shadow: 0 0 80px rgba(77, 204, 255, 0.9);
-            animation: newYearPulse 2s infinite alternate;
-        }
-        
-        .year-sparkles {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 3rem;
-            opacity: 0.7;
-            animation: sparkleSpin 15s linear infinite;
-        }
-        
-        .year-sparkles.left {
-            left: -50px;
-        }
-        
-        .year-sparkles.right {
-            right: -50px;
-        }
-        
-        /* ===== COUNTDOWN STYLES ===== */
-        .countdown-section {
-            padding: var(--spacing-lg) 0;
-            margin: var(--spacing-md) 0;
-        }
-        
-        .countdown-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: var(--spacing-lg);
-            opacity: 0;
-            animation: fadeInUp 1s 1s forwards;
-        }
-        
-        .countdown-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-md);
-            max-width: 1000px;
-            margin: 0 auto;
-            opacity: 0;
-            animation: fadeInUp 1s 1.2s forwards;
-        }
-        
-        .countdown-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border-radius: var(--border-radius);
-            padding: var(--spacing-md) var(--spacing-sm);
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all var(--transition-medium);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .countdown-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-gold), var(--primary-pink));
-        }
-        
-        .countdown-card.complete {
-            transform: translateY(-20px) scale(1.1);
-            background: rgba(255, 215, 0, 0.1);
-            border-color: var(--primary-gold);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
-            z-index: 100;
-        }
-        
-        .countdown-value {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            color: var(--primary-gold);
-            margin-bottom: var(--spacing-xs);
-            line-height: 1;
-            transition: all var(--transition-medium);
-        }
-        
-        .countdown-card.complete .countdown-value {
-            color: white;
-            text-shadow: 0 0 20px white;
-        }
-        
-        .countdown-label {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 500;
-        }
-        
-        /* ===== SCROLL DOWN PROMPT ===== */
-        .scroll-prompt {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--primary-blue);
-            font-size: 1.3rem;
-            text-align: center;
-            z-index: 100;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s;
-        }
-        
-        .scroll-prompt.show {
-            opacity: 1;
-            pointer-events: all;
-            animation: bounce 2s infinite;
-        }
-        
-        .scroll-prompt i {
+        .line {
             display: block;
-            font-size: 2rem;
-            margin-top: 10px;
+            margin-bottom: 1rem;
+            opacity: 0;
         }
         
-        /* ===== CONTENT LAYOUT ===== */
-        .content-section {
-            padding: var(--spacing-xl) 0;
-            position: relative;
+        .line:nth-child(1) {
+            animation: fadeInUp 1.5s forwards 0.5s;
         }
         
-        .content-wrapper {
+        .line:nth-child(2) {
+            animation: fadeInUp 1.5s forwards 1s;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Memory Section */
+        #memory-section {
+            background: linear-gradient(to bottom, #000000, #0a0a2a);
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ffdde1;
+            font-weight: 300;
+        }
+        
+        .memory-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr 1fr;
-            gap: var(--spacing-lg);
-            align-items: start;
-            max-width: 1400px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
         
-        .image-gallery {
+        .polaroid {
+            background: white;
+            padding: 15px 15px 30px 15px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(var(--rotation, 0deg));
+            transition: transform 0.5s ease;
+            cursor: pointer;
+            height: 320px;
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-lg);
-            position: sticky;
-            top: var(--spacing-xl);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s 0.5s, transform 1s 0.5s;
         }
         
-        .image-gallery.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .polaroid:hover {
+            transform: rotate(0) scale(1.05);
         }
         
-        .gallery-item {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            position: relative;
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: opacity 0.8s, transform 0.8s;
-        }
-        
-        .right-gallery .gallery-item {
-            transform: translateX(100px);
-        }
-        
-        .gallery-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .gallery-image {
+        .polaroid-img {
             width: 100%;
-            height: 240px;
+            height: 220px;
             object-fit: cover;
-            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 2px;
+            flex-grow: 1;
         }
         
-        .gallery-item:hover .gallery-image {
-            transform: scale(1.08);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: var(--spacing-md);
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-            color: white;
-            transform: translateY(10px);
-            opacity: 0;
-            transition: all 0.5s;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .gallery-caption {
+        .polaroid-caption {
+            color: #333;
+            text-align: center;
+            font-style: italic;
+            margin-top: 15px;
             font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-gold);
-            margin-bottom: 5px;
         }
         
-        .gallery-description {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        .memory-text {
+            text-align: center;
+            font-size: 1.8rem;
+            max-width: 800px;
+            margin: 50px auto;
+            color: #b0b0ff;
+            line-height: 1.8;
         }
         
-        /* ===== GREETING CENTER ===== */
-        .greeting-center {
-            position: relative;
-            z-index: 5;
+        /* Reflection Section */
+        #reflection-section {
+            background: linear-gradient(to bottom, #0a0a2a, #0a1a2a);
         }
         
-        .greeting-card {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(25px);
-            border-radius: calc(var(--border-radius) + 10px);
-            padding: var(--spacing-xl);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            position: relative;
-            overflow: hidden;
-            transform: translateY(30px);
-            opacity: 0;
-            animation: cardReveal 1.5s 0.8s forwards;
+        .reflection-container {
+            max-width: 900px;
+            text-align: center;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
         
-        .greeting-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, rgba(255,215,0,0.1) 0%, transparent 60%);
-            z-index: -1;
-        }
-        
-        .greeting-text {
-            font-size: clamp(1.2rem, 2vw, 1.6rem);
-            line-height: 1.7;
-            color: var(--text-light);
-            margin-bottom: var(--spacing-md);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s, transform 0.8s;
-        }
-        
-        .greeting-text.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .highlight-name {
-            color: var(--primary-pink);
-            font-weight: 700;
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            display: inline-block;
-            margin: 0 5px;
-            text-shadow: 0 0 15px rgba(255, 107, 139, 0.5);
-        }
-        
-        .new-year-greeting .highlight-name {
-            color: var(--primary-blue);
-            text-shadow: 0 0 15px rgba(77, 204, 255, 0.5);
-        }
-        
-        .greeting-signature {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-gold);
-            text-align: right;
-            margin-top: var(--spacing-lg);
-            opacity: 0;
-            transform: translateX(30px);
-            transition: opacity 0.8s 1.5s, transform 0.8s 1.5s;
-        }
-        
-        .greeting-signature.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        /* ===== TRANSITION EFFECTS ===== */
-        .transition-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        
-        body.transition-active .transition-overlay {
-            opacity: 1;
-        }
-        
-        .confetti-piece {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: var(--primary-gold);
-            opacity: 0;
-        }
-        
-        .burst-effect {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            box-shadow: 0 0 25px var(--primary-blue);
-            opacity: 0;
-        }
-        
-        /* ===== TEST BUTTON ===== */
-        .test-button {
-            position: fixed;
-            bottom: var(--spacing-lg);
-            right: var(--spacing-lg);
-            background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: all var(--transition-medium);
-            font-weight: 600;
-            letter-spacing: 1px;
+        .reflection-text {
+            font-size: 2.2rem;
+            line-height: 1.8;
+            color: #ffdde1;
+            font-weight: 300;
+            min-height: 300px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
         }
         
-        .test-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(255, 107, 139, 0.5);
+        .handwritten-line {
+            display: block;
+            margin-bottom: 1.5rem;
+            opacity: 0;
         }
         
-        /* ===== FIREWORKS BACKGROUND ===== */
-        .fireworks-canvas {
-            position: fixed;
+        .underline {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #a8c0ff, transparent);
+            width: 0;
+            margin: 30px auto 0;
+            transition: width 2s ease;
+        }
+        
+        /* Transition Section */
+        #transition-section {
+            background: linear-gradient(to bottom, #0a1a2a, #1a0a2a);
+        }
+        
+        .year-transition {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .year {
+            font-size: 12rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.1);
+            position: relative;
+            margin: 0;
+            transition: all 2s ease;
+        }
+        
+        #year-2025 {
+            margin-bottom: -80px;
+        }
+        
+        #year-2026 {
+            margin-top: -80px;
+        }
+        
+        .transition-text {
+            font-size: 2rem;
+            color: #b0b0ff;
+            margin-top: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Greeting Section */
+        #greeting-section {
+            background: linear-gradient(to bottom, #1a0a2a, #0a0a1a);
+        }
+        
+        .greeting-container {
+            max-width: 900px;
+            text-align: center;
+            padding: 50px;
+        }
+        
+        .greeting-message {
+            font-size: 2rem;
+            line-height: 1.8;
+            color: #f0f0f0;
+            margin-bottom: 50px;
+        }
+        
+        .greeting-line {
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+        
+        /* Interaction Section */
+        #interaction-section {
+            background: linear-gradient(to bottom, #0a0a1a, #000000);
+        }
+        
+        .interaction-container {
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .reveal-button {
+            background: linear-gradient(to right, #a8c0ff, #ffdde1);
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.5rem;
+            color: #0a0a1a;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(168, 192, 255, 0.3);
+            margin-bottom: 40px;
+        }
+        
+        .reveal-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(168, 192, 255, 0.4);
+        }
+        
+        .hidden-message {
+            font-size: 2rem;
+            color: #ffdde1;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+        
+        /* Final Section */
+        #final-section {
+            background: linear-gradient(to bottom, #000000, #0a0a2a);
+        }
+        
+        .final-container {
+            text-align: center;
+        }
+        
+        .final-text {
+            font-size: 5rem;
+            background: linear-gradient(to right, #ffdde1, #a8c0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            font-weight: 300;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+        }
+        
+        .subtext {
+            font-size: 1.8rem;
+            color: #b0b0ff;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        /* Fireworks */
+        .fireworks-container {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -529,852 +358,519 @@
             z-index: 1;
         }
         
-        /* ===== FLOATING ELEMENTS ===== */
-        .floating-orb {
+        .firework {
             position: absolute;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            z-index: 0;
-            animation: floatOrb 15s infinite ease-in-out;
+            opacity: 0;
         }
         
-        /* ===== FOOTER ===== */
-        .footer {
-            text-align: center;
-            padding: var(--spacing-xl) 0 var(--spacing-lg);
-            margin-top: var(--spacing-xl);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-muted);
-            font-size: 1rem;
+        /* Confetti */
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
         }
         
-        .heart-beat {
-            color: var(--primary-pink);
-            animation: heartbeat 1.5s infinite;
-            display: inline-block;
-            margin: 0 5px;
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
         }
         
-        /* ===== ANIMATION KEYFRAMES ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .opening-text h1 {
+                font-size: 2.5rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .memory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
-        }
-        
-        @keyframes cardReveal {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
+            
+            .year {
+                font-size: 8rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
+            
+            .final-text {
+                font-size: 3.5rem;
             }
-        }
-        
-        @keyframes sparkleSpin {
-            0% { transform: translateY(-50%) rotate(0deg); }
-            100% { transform: translateY(-50%) rotate(360deg); }
-        }
-        
-        @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 40px) scale(0.9); }
-        }
-        
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes confettiFall {
-            0% { 
-                transform: translateY(-100px) rotate(0deg); 
-                opacity: 1; 
-            }
-            100% { 
-                transform: translateY(1000px) rotate(720deg); 
-                opacity: 0; 
+            
+            .reflection-text, .greeting-message {
+                font-size: 1.6rem;
             }
         }
         
-        @keyframes burstExpand {
-            0% { 
-                transform: scale(0); 
-                opacity: 1; 
-            }
-            100% { 
-                transform: scale(25); 
-                opacity: 0; 
-            }
-        }
-        
-        @keyframes newYearPulse {
-            0% { 
-                transform: scale(1); 
-                text-shadow: 0 0 80px rgba(77, 204, 255, 0.9);
-            }
-            100% { 
-                transform: scale(1.05); 
-                text-shadow: 0 0 100px rgba(77, 204, 255, 1);
-            }
+        /* Scroll Animations */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #b0b0ff;
+            font-size: 1.2rem;
+            z-index: 10;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
         }
         
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-20px); }
-            60% { transform: translateX(-50%) translateY(-10px); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
         }
         
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 1200px) {
-            .content-wrapper {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-xl);
-            }
-            
-            .image-gallery {
-                position: static;
-                flex-direction: row;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .gallery-item {
-                flex: 0 0 calc(33.333% - 20px);
-                transform: translateY(50px) !important;
-            }
-            
-            .right-gallery .gallery-item {
-                transform: translateY(50px) !important;
-            }
-            
-            .greeting-center {
-                order: -1;
-            }
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
         }
         
-        @media (max-width: 768px) {
-            :root {
-                --spacing-md: 25px;
-                --spacing-lg: 40px;
-                --spacing-xl: 50px;
-            }
-            
-            .container {
-                padding: var(--spacing-sm);
-            }
-            
-            .countdown-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--spacing-sm);
-            }
-            
-            .gallery-item {
-                flex: 0 0 calc(50% - 15px);
-                height: 200px;
-            }
-            
-            .gallery-image {
-                height: 200px;
-            }
-            
-            .test-button {
-                bottom: var(--spacing-md);
-                right: var(--spacing-md);
-                padding: 12px 24px;
-                font-size: 1rem;
-            }
-            
-            .year-sparkles {
-                display: none;
-            }
-            
-            .scroll-prompt {
-                bottom: 70px;
-                font-size: 1.1rem;
-            }
-            
-            .scroll-prompt i {
-                font-size: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .countdown-grid {
-                grid-template-columns: 1fr;
-                max-width: 250px;
-            }
-            
-            .gallery-item {
-                flex: 0 0 100%;
-                height: 180px;
-            }
-            
-            .gallery-image {
-                height: 180px;
-            }
-            
-            .greeting-card {
-                padding: var(--spacing-lg);
-            }
-            
-            .scroll-prompt {
-                bottom: 80px;
-                font-size: 1rem;
-            }
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Transition Effects Overlay -->
-    <div class="transition-overlay" id="transition-overlay"></div>
-    
-    <!-- Fireworks Canvas -->
-    <canvas class="fireworks-canvas" id="fireworks-canvas"></canvas>
-    
-    <!-- Scroll Down Prompt -->
-    <div class="scroll-prompt" id="scroll-prompt">
-        Please scroll down
-        <i class="fas fa-chevron-down"></i>
-    </div>
-    
-    <!-- Floating Orbs -->
-    <div class="floating-orb" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;"></div>
-    <div class="floating-orb" style="width: 200px; height: 200px; bottom: 15%; right: 8%; animation-delay: 2s;"></div>
-    <div class="floating-orb" style="width: 250px; height: 250px; top: 30%; right: 10%; animation-delay: 4s;"></div>
-    
-    <!-- Test Button -->
-    <button class="test-button" id="test-transition">
-        <i class="fas fa-bolt"></i> Test Transition
-    </button>
-    
-    <!-- Pre-Transition Section (2025) -->
-    <div class="page-section pre-transition">
-        <div class="container">
-            <header class="header-container">
-                <h1 class="main-title">Happy New Year 2025</h1>
-                <p class="subtitle">Counting down to a spectacular new beginning</p>
-            </header>
-            
-            <div class="year-container">
-                <div class="year-sparkles left">✦</div>
-                <h2 class="year-display" id="year-display">2025</h2>
-                <div class="year-sparkles right">✦</div>
-            </div>
-            
-            <div class="countdown-section">
-                <h3 class="countdown-title">Countdown to 2026</h3>
-                <div class="countdown-grid">
-                    <div class="countdown-card">
-                        <div class="countdown-value" id="days">00</div>
-                        <div class="countdown-label">Days</div>
-                    </div>
-                    <div class="countdown-card">
-                        <div class="countdown-value" id="hours">00</div>
-                        <div class="countdown-label">Hours</div>
-                    </div>
-                    <div class="countdown-card">
-                        <div class="countdown-value" id="minutes">00</div>
-                        <div class="countdown-label">Minutes</div>
-                    </div>
-                    <div class="countdown-card">
-                        <div class="countdown-value" id="seconds">00</div>
-                        <div class="countdown-label">Seconds</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="content-section">
-                <div class="content-wrapper">
-                    <!-- Left Gallery -->
-                    <div class="image-gallery left-gallery">
-                        <div class="gallery-item" data-delay="0.1">
-                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Celebration" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Celebration Time</div>
-                                <div class="gallery-description">Joyful moments await</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-delay="0.3">
-                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Fireworks" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Magical Fireworks</div>
-                                <div class="gallery-description">Dazzling displays of light</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-delay="0.5">
-                            <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Colors" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Vibrant Colors</div>
-                                <div class="gallery-description">A palette of celebration</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Center Greeting -->
-                    <div class="greeting-center">
-                        <div class="greeting-card">
-                            <p class="greeting-text">
-                                As the final moments of 2025 approach, we stand on the brink of something beautiful. A new chapter filled with hope, dreams, and endless possibilities awaits.
-                            </p>
-                            <p class="greeting-text">
-                                This countdown marks not just the passage of time, but the beginning of an extraordinary journey into a year that promises to be brighter than ever before.
-                            </p>
-                            <p class="greeting-text">
-                                Get ready to embrace 2026 with an open heart and a spirit ready for adventure!
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Gallery -->
-                    <div class="image-gallery right-gallery">
-                        <div class="gallery-item" data-delay="0.2">
-                            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sparkling" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Sparkling Nights</div>
-                                <div class="gallery-description">Twinkling celebrations</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-delay="0.4">
-                            <img src="https://images.unsplash.com/photo-1482517967863-00e15c9b44be?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Lights" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Dazzling Lights</div>
-                                <div class="gallery-description">Illuminating the night</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-delay="0.6">
-                            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Midnight" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Midnight Magic</div>
-                                <div class="gallery-description">The moment of transition</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <footer class="footer">
-                <p>Waiting for the magical moment when 2025 becomes 2026</p>
-            </footer>
+    <!-- Opening Scene -->
+    <section id="opening-scene" class="section active">
+        <div class="stars" id="stars"></div>
+        <div class="opening-text">
+            <h1>
+                <span class="line">Before the year changes…</span>
+                <span class="line">let's pause for a moment.</span>
+            </h1>
+            <p>Scroll to begin the journey</p>
         </div>
-    </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
     
-    <!-- Post-Transition Section (2026) -->
-    <div class="page-section post-transition new-year-greeting">
+    <!-- 2025 Memory Section -->
+    <section id="memory-section" class="section">
         <div class="container">
-            <header class="header-container">
-                <h1 class="main-title">Welcome to 2026!</h1>
-                <p class="subtitle">A spectacular new beginning has arrived</p>
-            </header>
-            
-            <div class="year-container">
-                <div class="year-sparkles left">✨</div>
-                <h2 class="year-display new-year" id="new-year-display">2026</h2>
-                <div class="year-sparkles right">✨</div>
+            <h2 class="section-title">2025 gave me moments I'll always carry.</h2>
+            <div class="memory-grid">
+                <!-- Polaroid images will be generated by JavaScript -->
             </div>
-            
-            <div class="content-section">
-                <div class="content-wrapper">
-                    <!-- Left Gallery for 2026 -->
-                    <div class="image-gallery left-gallery">
-                        <div class="gallery-item" data-delay="0.1">
-                            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="New Beginnings" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">New Beginnings</div>
-                                <div class="gallery-description">Fresh starts await</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-delay="0.3">
-                            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Fireworks 2026" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Celebration Fireworks</div>
-                                <div class="gallery-description">Lighting up the sky</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-delay="0.5">
-                            <img src="https://images.unsplash.com/photo-1492684223066-dd23140edf6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hope" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Hope & Joy</div>
-                                <div class="gallery-description">Bright days ahead</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Center Greeting for 2026 -->
-                    <div class="greeting-center">
-                        <div class="greeting-card">
-                            <p class="greeting-text">
-                                The moment has finally arrived! As the clock struck midnight, we welcomed a brand new year filled with infinite possibilities and boundless hope.
-                            </p>
-                            
-                            <p class="greeting-text">
-                                To my dearest <span class="highlight-name">Special Someone</span>, may 2026 bring you:
-                            </p>
-                            
-                            <p class="greeting-text">
-                                Days painted with laughter and joy<br>
-                                Nights filled with peaceful dreams<br>
-                                Success in every endeavor you pursue<br>
-                                Love that grows deeper with each sunrise
-                            </p>
-                            
-                            <p class="greeting-text">
-                                May this year be your most extraordinary chapter yet, filled with adventures that become cherished memories and dreams that transform into beautiful reality.
-                            </p>
-                            
-                            <div class="greeting-signature">With all my love,</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Gallery for 2026 -->
-                    <div class="image-gallery right-gallery">
-                        <div class="gallery-item" data-delay="0.2">
-                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Horizons" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">New Horizons</div>
-                                <div class="gallery-description">Discover what lies ahead</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-delay="0.4">
-                            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Nature" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Fresh Perspectives</div>
-                                <div class="gallery-description">Seeing the world anew</div>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-delay="0.6">
-                            <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Stars" class="gallery-image">
-                            <div class="gallery-overlay">
-                                <div class="gallery-caption">Reach for Stars</div>
-                                <div class="gallery-description">Dream big, achieve bigger</div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="memory-text">
+                <p>Late talks, small laughs, quiet support... all of it mattered.</p>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Reflection Message -->
+    <section id="reflection-section" class="section">
+        <div class="container">
+            <div class="reflection-container">
+                <div class="reflection-text" id="reflection-text">
+                    <!-- Text will be added by JavaScript -->
+                </div>
+                <div class="underline" id="underline"></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Transition Section -->
+    <section id="transition-section" class="section">
+        <div class="container">
+            <div class="year-transition">
+                <h2 class="year" id="year-2025">2025</h2>
+                <h2 class="year" id="year-2026">2026</h2>
+                <p class="transition-text">Some years don't leave… they change us.</p>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Greeting Message -->
+    <section id="greeting-section" class="section">
+        <div class="container">
+            <div class="greeting-container">
+                <div class="greeting-message" id="greeting-message">
+                    <!-- Text will be added by JavaScript -->
                 </div>
             </div>
-            
-            <footer class="footer">
-                <p>Created with <span class="heart-beat">❤️</span> for someone extraordinary | May your 2026 be filled with wonder and delight</p>
-                <p>Wishing you 365 days of happiness, 52 weeks of success, and 12 months of prosperity!</p>
-            </footer>
         </div>
-    </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Interaction Moment -->
+    <section id="interaction-section" class="section">
+        <div class="container">
+            <div class="interaction-container">
+                <button class="reveal-button" id="reveal-button">One last thing…</button>
+                <div class="hidden-message" id="hidden-message">
+                    No matter where life takes us, this year begins with you in my thoughts.
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Final Scroll -->
+    <section id="final-section" class="section">
+        <div class="container">
+            <div class="final-container">
+                <h1 class="final-text">Happy New Year 2026 ✨</h1>
+                <p class="subtext">With gratitude for 2025, and hope for everything ahead.</p>
+            </div>
+        </div>
+        <div class="fireworks-container" id="fireworks"></div>
+    </section>
+    
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti"></div>
 
     <script>
-        // DOM Elements
-        const body = document.body;
-        const testButton = document.getElementById('test-transition');
-        const yearDisplay = document.getElementById('year-display');
-        const newYearDisplay = document.getElementById('new-year-display');
-        const transitionOverlay = document.getElementById('transition-overlay');
-        const scrollPrompt = document.getElementById('scroll-prompt');
-        const canvas = document.getElementById('fireworks-canvas');
-        const ctx = canvas.getContext('2d');
-        
-        // Set canvas dimensions
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        // State
-        let transitionTriggered = false;
-        let fireworks = [];
-        let particles = [];
-        
-        // Countdown elements
-        const countdownCards = document.querySelectorAll('.countdown-card');
-        const countdownValues = {
-            days: document.getElementById('days'),
-            hours: document.getElementById('hours'),
-            minutes: document.getElementById('minutes'),
-            seconds: document.getElementById('seconds')
-        };
-        
-        // Gallery items
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const galleries = document.querySelectorAll('.image-gallery');
-        const greetingTexts = document.querySelectorAll('.greeting-text');
-        const greetingSignature = document.querySelector('.greeting-signature');
-        
-        // ===== FIREWORKS CANVAS ANIMATION =====
-        class Particle {
-            constructor(x, y, color) {
-                this.x = x;
-                this.y = y;
-                this.color = color;
-                this.velocity = {
-                    x: (Math.random() - 0.5) * 10,
-                    y: (Math.random() - 0.5) * 10
-                };
-                this.alpha = 1;
-                this.decay = Math.random() * 0.02 + 0.01;
-                this.size = Math.random() * 3 + 1;
-            }
+        // Create starfield for opening scene
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
             
-            update() {
-                this.velocity.y += 0.05;
-                this.x += this.velocity.x;
-                this.y += this.velocity.y;
-                this.alpha -= this.decay;
-            }
-            
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-        
-        class Firework {
-            constructor(x, y, targetX, targetY) {
-                this.x = x;
-                this.y = y;
-                this.targetX = targetX;
-                this.targetY = targetY;
-                this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
-                this.size = 2;
-                this.speed = 4;
-                this.velocity = {
-                    x: (targetX - x) / 100 * this.speed,
-                    y: (targetY - y) / 100 * this.speed
-                };
-                this.exploded = false;
-            }
-            
-            update() {
-                this.x += this.velocity.x;
-                this.y += this.velocity.y;
-                
-                const distance = Math.sqrt(
-                    Math.pow(this.targetX - this.x, 2) + 
-                    Math.pow(this.targetY - this.y, 2)
-                );
-                
-                if (distance < 10 && !this.exploded) {
-                    this.explode();
-                }
-            }
-            
-            explode() {
-                this.exploded = true;
-                for (let i = 0; i < 100; i++) {
-                    particles.push(new Particle(this.x, this.y, this.color));
-                }
-            }
-            
-            draw() {
-                ctx.save();
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-        
-        function createFirework() {
-            const startX = Math.random() * canvas.width;
-            const startY = canvas.height;
-            const targetX = Math.random() * canvas.width;
-            const targetY = Math.random() * canvas.height * 0.7;
-            
-            fireworks.push(new Firework(startX, startY, targetX, targetY));
-        }
-        
-        function animateFireworks() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Update and draw fireworks
-            for (let i = fireworks.length - 1; i >= 0; i--) {
-                fireworks[i].update();
-                fireworks[i].draw();
-                
-                if (fireworks[i].exploded) {
-                    fireworks.splice(i, 1);
-                }
-            }
-            
-            // Update and draw particles
-            for (let i = particles.length - 1; i >= 0; i--) {
-                particles[i].update();
-                particles[i].draw();
-                
-                if (particles[i].alpha <= 0) {
-                    particles.splice(i, 1);
-                }
-            }
-            
-            requestAnimationFrame(animateFireworks);
-        }
-        
-        // ===== TRANSITION EFFECTS =====
-        function createTransitionEffects() {
-            transitionOverlay.innerHTML = '';
-            
-            // Create confetti
-            for (let i = 0; i < 200; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti-piece';
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
                 
                 // Random position
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.top = `${Math.random() * 100}%`;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                
+                // Random animation delay
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Create polaroid images for memory section
+        function createPolaroids() {
+            const memoryGrid = document.querySelector('.memory-grid');
+            
+            // Image data with descriptions
+            const images = [
+                { color: "#a8c0ff", desc: "A moment of laughter" },
+                { color: "#ffdde1", desc: "Quiet reflection" },
+                { color: "#b0b0ff", desc: "Shared sunrise" },
+                { color: "#a8e6cf", desc: "Unexpected joy" },
+                { color: "#ffaaa5", desc: "Deep conversation" },
+                { color: "#dcedc1", desc: "Simple happiness" }
+            ];
+            
+            images.forEach((img, index) => {
+                const polaroid = document.createElement('div');
+                polaroid.className = 'polaroid';
+                
+                // Random slight rotation between -5 and 5 degrees
+                const rotation = (Math.random() * 10) - 5;
+                polaroid.style.setProperty('--rotation', `${rotation}deg`);
+                
+                // Create colored placeholder (in a real scenario, these would be actual images)
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'polaroid-img';
+                imgDiv.style.backgroundColor = img.color;
+                imgDiv.style.display = 'flex';
+                imgDiv.style.alignItems = 'center';
+                imgDiv.style.justifyContent = 'center';
+                
+                // Add an icon to represent the image
+                const icon = document.createElement('i');
+                const icons = ['fas fa-heart', 'fas fa-smile', 'fas fa-sun', 'fas fa-moon', 'fas fa-star', 'fas fa-coffee'];
+                icon.className = icons[index % icons.length];
+                icon.style.fontSize = '3rem';
+                icon.style.color = 'rgba(255, 255, 255, 0.8)';
+                imgDiv.appendChild(icon);
+                
+                const caption = document.createElement('p');
+                caption.className = 'polaroid-caption';
+                caption.textContent = img.desc;
+                
+                polaroid.appendChild(imgDiv);
+                polaroid.appendChild(caption);
+                
+                memoryGrid.appendChild(polaroid);
+            });
+        }
+        
+        // Typewriter effect for reflection text
+        function typewriterEffect(element, text, speed = 50) {
+            let i = 0;
+            const lines = text.split('\n');
+            let currentLine = 0;
+            
+            function typeLine() {
+                if (currentLine < lines.length) {
+                    const line = lines[currentLine];
+                    if (i < line.length) {
+                        element.innerHTML += line.charAt(i);
+                        i++;
+                        setTimeout(typeLine, speed);
+                    } else {
+                        // Move to next line
+                        element.innerHTML += '<br>';
+                        i = 0;
+                        currentLine++;
+                        setTimeout(typeLine, speed * 2);
+                    }
+                } else {
+                    // Text complete, show underline
+                    setTimeout(() => {
+                        document.getElementById('underline').style.width = '100%';
+                    }, 500);
+                }
+            }
+            
+            // Clear element and start typing
+            element.innerHTML = '';
+            typeLine();
+        }
+        
+        // Reveal greeting message lines one by one
+        function revealGreeting() {
+            const lines = [
+                "As 2025 comes to a close,",
+                "I just want to say thank you.",
+                "For being there, even from far away.",
+                "For every conversation, every moment, every memory.",
+                "I hope 2026 brings you calm days,",
+                "soft smiles, and everything you truly deserve."
+            ];
+            
+            const container = document.getElementById('greeting-message');
+            container.innerHTML = '';
+            
+            lines.forEach((line, index) => {
+                const lineElement = document.createElement('p');
+                lineElement.className = 'greeting-line';
+                lineElement.textContent = line;
+                container.appendChild(lineElement);
+                
+                // Animate each line with delay
+                setTimeout(() => {
+                    lineElement.style.opacity = '1';
+                    lineElement.style.animation = 'fadeInUp 1.5s forwards';
+                }, index * 800);
+            });
+        }
+        
+        // Create fireworks for final section
+        function createFireworks() {
+            const container = document.getElementById('fireworks');
+            const fireworkCount = 20;
+            
+            for (let i = 0; i < fireworkCount; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    
+                    // Random position
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+                    
+                    // Random color
+                    const colors = ['#ffdde1', '#a8c0ff', '#b0b0ff', '#a8e6cf', '#ffaaa5'];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    firework.style.left = `${x}%`;
+                    firework.style.top = `${y}%`;
+                    firework.style.backgroundColor = color;
+                    firework.style.boxShadow = `0 0 10px ${color}`;
+                    
+                    container.appendChild(firework);
+                    
+                    // Animate the firework
+                    const animation = firework.animate([
+                        { opacity: 0, transform: 'scale(0)' },
+                        { opacity: 1, transform: 'scale(1)' },
+                        { opacity: 0, transform: 'scale(0)' }
+                    ], {
+                        duration: 1500,
+                        easing: 'ease-out'
+                    });
+                    
+                    // Remove element after animation
+                    animation.onfinish = () => {
+                        firework.remove();
+                    };
+                    
+                }, i * 500); // Stagger the fireworks
+            }
+            
+            // Continue creating fireworks
+            setInterval(() => {
+                createFireworks();
+            }, 3000);
+        }
+        
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confetti');
+            container.style.opacity = '1';
+            
+            const confettiCount = 150;
+            const colors = ['#ffdde1', '#a8c0ff', '#b0b0ff', '#a8e6cf', '#ffaaa5', '#dcedc1'];
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Random position
+                const x = Math.random() * 100;
                 
                 // Random color
-                const colors = ['#ffd700', '#ff6b8b', '#4dccff', '#9dff70', '#ffffff'];
                 const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random shape (square or circle)
+                const isCircle = Math.random() > 0.5;
+                confetti.style.borderRadius = isCircle ? '50%' : '2px';
+                
+                confetti.style.left = `${x}%`;
                 confetti.style.backgroundColor = color;
                 
-                // Random size and shape
-                const size = 6 + Math.random() * 12;
+                // Random size
+                const size = Math.random() * 10 + 5;
                 confetti.style.width = `${size}px`;
                 confetti.style.height = `${size}px`;
-                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
                 
-                // Random animation
-                const delay = Math.random() * 1.5;
-                const duration = 2 + Math.random() * 2;
-                confetti.style.animation = `confettiFall ${duration}s ease-in ${delay}s forwards`;
+                container.appendChild(confetti);
                 
-                transitionOverlay.appendChild(confetti);
+                // Animate confetti falling
+                const animation = confetti.animate([
+                    { 
+                        opacity: 1, 
+                        transform: `translateY(-100px) rotate(0deg)`,
+                        top: '-10px'
+                    },
+                    { 
+                        opacity: 0.8, 
+                        transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`,
+                        top: `${window.innerHeight}px`
+                    }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                // Remove element after animation
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
             }
             
-            // Create burst effects
-            for (let i = 0; i < 15; i++) {
-                const burst = document.createElement('div');
-                burst.className = 'burst-effect';
-                
-                // Random position
-                burst.style.left = `${Math.random() * 100}%`;
-                burst.style.top = `${Math.random() * 100}%`;
-                
-                // Random color
-                const colors = ['#ffd700', '#4dccff', '#ff6b8b'];
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                burst.style.backgroundColor = color;
-                burst.style.boxShadow = `0 0 40px ${color}`;
-                
-                // Random animation
-                const delay = 0.3 + Math.random() * 1;
-                const duration = 1.2 + Math.random() * 0.8;
-                burst.style.animation = `burstExpand ${duration}s ease-out ${delay}s forwards`;
-                
-                transitionOverlay.appendChild(burst);
-            }
-        }
-        
-        // ===== COUNTDOWN ANIMATION =====
-        function animateCountdownCompletion() {
-            // Animate each countdown card with delay
-            countdownCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('complete');
-                }, index * 400);
-            });
-            
-            // Trigger full transition after animation completes
+            // Stop confetti after 5 seconds
             setTimeout(() => {
-                triggerNewYearTransition();
-            }, 2000);
+                container.style.opacity = '0';
+            }, 5000);
         }
         
-        // ===== NEW YEAR TRANSITION =====
-        function triggerNewYearTransition() {
-            if (transitionTriggered) return;
-            transitionTriggered = true;
-            
-            // Add transition classes
-            body.classList.add('transition-active', 'new-year-transition');
-            
-            // Create transition effects
-            createTransitionEffects();
-            
-            // Update year display
-            setTimeout(() => {
-                yearDisplay.textContent = '2026';
-                yearDisplay.classList.add('new-year');
-                
-                // Show scroll prompt after transition
-                setTimeout(() => {
-                    scrollPrompt.classList.add('show');
-                }, 1500);
-                
-                // Show 2026 elements
-                setTimeout(() => {
-                    revealNewYearElements();
-                }, 800);
-            }, 1200);
-            
-            // Create fireworks
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    createFirework();
-                }, i * 200);
-            }
-        }
-        
-        function revealNewYearElements() {
-            // Show galleries
-            galleries.forEach(gallery => {
-                gallery.classList.add('visible');
-            });
-            
-            // Show gallery items with delay
-            galleryItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.classList.add('visible');
-                }, 300 + (index % 3) * 200);
-            });
-            
-            // Show greeting texts
-            greetingTexts.forEach((text, index) => {
-                setTimeout(() => {
-                    text.classList.add('visible');
-                }, 800 + index * 500);
-            });
-            
-            // Show signature
-            setTimeout(() => {
-                greetingSignature.classList.add('visible');
-            }, 2800);
-        }
-        
-        // ===== COUNTDOWN LOGIC =====
-        function updateCountdown() {
-            // Target date: January 1, 2026
-            const now = new Date();
-            const targetDate = new Date('January 1, 2026 00:00:00');
-            const diff = targetDate - now;
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            // Update display
-            countdownValues.days.textContent = days.toString().padStart(2, '0');
-            countdownValues.hours.textContent = hours.toString().padStart(2, '0');
-            countdownValues.minutes.textContent = minutes.toString().padStart(2, '0');
-            countdownValues.seconds.textContent = seconds.toString().padStart(2, '0');
-            
-            // Check if countdown is complete
-            if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 && !transitionTriggered) {
-                animateCountdownCompletion();
-            }
-        }
-        
-        // ===== SCROLL ANIMATIONS =====
+        // Scroll animation for sections
         function handleScrollAnimations() {
+            const sections = document.querySelectorAll('.section');
             const windowHeight = window.innerHeight;
             const scrollY = window.scrollY;
             
-            // Hide scroll prompt when user starts scrolling
-            if (scrollY > 100) {
-                scrollPrompt.classList.remove('show');
-            }
-            
-            // Animate gallery items
-            galleryItems.forEach(item => {
-                const rect = item.getBoundingClientRect();
-                const itemTop = rect.top + scrollY;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
                 
-                if (scrollY + windowHeight * 0.8 > itemTop) {
-                    const delay = item.getAttribute('data-delay') || 0;
-                    setTimeout(() => {
-                        item.classList.add('visible');
-                    }, delay * 1000);
-                }
-            });
-            
-            // Animate galleries
-            galleries.forEach(gallery => {
-                const rect = gallery.getBoundingClientRect();
-                const galleryTop = rect.top + scrollY;
-                
-                if (scrollY + windowHeight * 0.7 > galleryTop) {
-                    gallery.classList.add('visible');
+                // Check if section is in view
+                if (scrollY > sectionTop - windowHeight * 0.7) {
+                    section.classList.add('active');
+                    
+                    // Trigger specific animations for each section
+                    if (section.id === 'reflection-section' && !section.dataset.animated) {
+                        section.dataset.animated = 'true';
+                        const reflectionText = "We started as strangers,\nand somewhere along the way,\nyou became one of the most important\npeople in my life.";
+                        typewriterEffect(document.getElementById('reflection-text'), reflectionText);
+                    }
+                    
+                    if (section.id === 'transition-section' && !section.dataset.animated) {
+                        section.dataset.animated = 'true';
+                        // Animate year transition
+                        setTimeout(() => {
+                            document.getElementById('year-2025').style.opacity = '0';
+                            document.getElementById('year-2025').style.transform = 'translateY(-100px)';
+                            document.getElementById('year-2026').style.opacity = '0.8';
+                            document.getElementById('year-2026').style.transform = 'translateY(0)';
+                        }, 500);
+                    }
+                    
+                    if (section.id === 'greeting-section' && !section.dataset.animated) {
+                        section.dataset.animated = 'true';
+                        revealGreeting();
+                    }
+                    
+                    if (section.id === 'final-section' && !section.dataset.animated) {
+                        section.dataset.animated = 'true';
+                        createFireworks();
+                    }
                 }
             });
         }
         
-        // ===== TEST BUTTON =====
-        testButton.addEventListener('click', function() {
-            // Animate countdown to zero
-            countdownValues.days.textContent = '00';
-            countdownValues.hours.textContent = '00';
-            countdownValues.minutes.textContent = '00';
-            countdownValues.seconds.textContent = '00';
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create stars
+            createStars();
             
-            // Trigger transition
+            // Create polaroids
+            createPolaroids();
+            
+            // Set up reveal button
+            document.getElementById('reveal-button').addEventListener('click', function() {
+                // Show hidden message
+                document.getElementById('hidden-message').style.opacity = '1';
+                document.getElementById('hidden-message').style.transform = 'translateY(0)';
+                
+                // Create confetti
+                createConfetti();
+                
+                // Disable button
+                this.disabled = true;
+                this.textContent = "Thank you for being part of my 2025";
+            });
+            
+            // Handle scroll animations
+            window.addEventListener('scroll', handleScrollAnimations);
+            
+            // Initial check for animations
+            handleScrollAnimations();
+            
+            // Auto-scroll hint after a few seconds
             setTimeout(() => {
-                animateCountdownCompletion();
-            }, 500);
-            
-            // Update button state
-            this.innerHTML = '<i class="fas fa-check"></i> Transition Tested!';
-            this.disabled = true;
-            
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-bolt"></i> Test Transition';
-                this.disabled = false;
+                document.querySelector('.scroll-indicator').style.animation = 'bounce 2s infinite';
             }, 3000);
         });
-        
-        // ===== INITIALIZATION =====
-        function init() {
-            // Start fireworks animation
-            animateFireworks();
-            
-            // Create occasional fireworks
-            setInterval(createFirework, 1500);
-            
-            // Update countdown every second
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-            
-            // Set up scroll animations
-            window.addEventListener('scroll', handleScrollAnimations);
-            window.addEventListener('load', handleScrollAnimations);
-            
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-            
-            // Trigger initial animations
-            setTimeout(() => {
-                handleScrollAnimations();
-            }, 1000);
-            
-            // Animate name color
-            const highlightName = document.querySelector('.highlight-name');
-            if (highlightName) {
-                const colors = ['#ff6b8b', '#4dccff', '#9dff70', '#ffd700', '#9d70ff'];
-                let colorIndex = 0;
-                
-                setInterval(() => {
-                    highlightName.style.color = colors[colorIndex];
-                    colorIndex = (colorIndex + 1) % colors.length;
-                }, 3000);
-            }
-        }
-        
-        // Start everything
-        init();
     </script>
 </body>
 </html>
