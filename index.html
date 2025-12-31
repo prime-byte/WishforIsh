@@ -13,7 +13,15 @@
             padding: 0;
             box-sizing: border-box;
         }
-   
+         .test-button {
+    display: none !important;
+}
+img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
         :root {
             --primary-gold: #ffd700;
             --primary-pink: #ff6b8b;
@@ -1555,7 +1563,16 @@
                 handleScrollAnimations();
             });
         }
-        
+        // Disable right-click on images
+document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+});
+
+// Disable drag
+document.querySelectorAll('img').forEach(img => {
+    img.setAttribute('draggable', 'false');
+});
+
         // Start everything
         init();
     </script>
