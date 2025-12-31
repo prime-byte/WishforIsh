@@ -28,9 +28,9 @@
             --text-muted: #a3d9ff;
             --spacing-xs: 10px;
             --spacing-sm: 20px;
-            --spacing-md: 40px;
-            --spacing-lg: 60px;
-            --spacing-xl: 80px;
+            --spacing-md: 30px;
+            --spacing-lg: 50px;
+            --spacing-xl: 70px;
             --border-radius: 20px;
             --transition-slow: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             --transition-medium: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -54,6 +54,14 @@
         
         body.new-year-transition {
             background: var(--bg-gradient-2026);
+        }
+        
+        /* Container for proper spacing */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
         }
         
         /* ===== GLASS EFFECTS ===== */
@@ -85,6 +93,8 @@
             z-index: 100;
             background: var(--bg-gradient-2025);
             transition: opacity var(--transition-slow), transform var(--transition-slow);
+            overflow: hidden;
+            padding: var(--spacing-md);
         }
         
         .countdown-page.hidden {
@@ -96,16 +106,24 @@
         /* ===== COUNTDOWN HEADER WITH IMAGE ===== */
         .countdown-header {
             text-align: center;
-            margin-bottom: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
             position: relative;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .countdown-image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
         }
         
         .countdown-image {
-            width: 250px;  
-            height: 250px;
+            width: clamp(150px, 25vw, 250px);
+            height: clamp(150px, 25vw, 250px);
             border-radius: 45%;
             overflow: hidden;
-            margin: 0 auto var(--spacing-md);
             border: 4px solid var(--primary-gold);
             box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
             position: relative;
@@ -133,7 +151,7 @@
         
         .goodbye-text {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2rem, 6vw, 4rem);
             color: var(--primary-gold);
             text-align: center;
             margin-bottom: var(--spacing-sm);
@@ -144,7 +162,7 @@
         
         .year-2025 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 8vw, 6rem);
             color: var(--primary-pink);
             text-align: center;
             margin-bottom: var(--spacing-md);
@@ -155,7 +173,7 @@
         
         .countdown-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: var(--text-muted);
             text-align: center;
             margin-bottom: var(--spacing-lg);
@@ -166,18 +184,19 @@
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-md);
+            gap: var(--spacing-sm);
             max-width: 1000px;
             margin: 0 auto;
             opacity: 0;
             animation: fadeInUp 1s 1.5s forwards;
+            width: 100%;
         }
         
         .countdown-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
             border-radius: var(--border-radius);
-            padding: var(--spacing-md) var(--spacing-sm);
+            padding: var(--spacing-sm);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -206,12 +225,14 @@
         
         .countdown-value {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2rem, 5vw, 4.5rem);
             font-weight: 800;
             color: var(--primary-gold);
             margin-bottom: var(--spacing-xs);
             line-height: 1;
             transition: all var(--transition-medium);
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .countdown-card.complete .countdown-value {
@@ -220,10 +241,10 @@
         }
         
         .countdown-label {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-size: clamp(0.8rem, 2vw, 1.1rem);
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             font-weight: 500;
         }
         
@@ -232,6 +253,8 @@
             opacity: 0;
             transform: translateY(50px);
             transition: opacity var(--transition-slow), transform var(--transition-slow);
+            width: 100%;
+            overflow: hidden;
         }
         
         .new-year-page.visible {
@@ -242,14 +265,15 @@
         /* ===== HEADER STYLES ===== */
         .header-container {
             text-align: center;
-            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            padding: var(--spacing-lg) 0;
             position: relative;
             z-index: 20;
+            width: 100%;
         }
         
         .main-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
             font-weight: 900;
             margin-bottom: var(--spacing-sm);
             background: linear-gradient(135deg, var(--primary-gold), var(--primary-pink), var(--primary-blue));
@@ -259,13 +283,15 @@
             text-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
             letter-spacing: 1px;
             line-height: 1.1;
+            overflow-wrap: break-word;
         }
         
         .subtitle {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: var(--text-muted);
             margin-top: var(--spacing-sm);
+            overflow-wrap: break-word;
         }
         
         /* ===== YEAR DISPLAY ===== */
@@ -273,11 +299,13 @@
             text-align: center;
             margin: var(--spacing-lg) 0;
             position: relative;
+            width: 100%;
+            overflow: hidden;
         }
         
         .year-display {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(6rem, 15vw, 12rem);
+            font-size: clamp(4rem, 15vw, 12rem);
             font-weight: 900;
             color: var(--primary-gold);
             text-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
@@ -286,6 +314,7 @@
             position: relative;
             display: inline-block;
             transition: all var(--transition-slow);
+            overflow: hidden;
         }
         
         .year-display.new-year {
@@ -298,17 +327,17 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 3rem;
+            font-size: clamp(1.5rem, 4vw, 3rem);
             opacity: 0.7;
             animation: sparkleSpin 15s linear infinite;
         }
         
         .year-sparkles.left {
-            left: -50px;
+            left: 0;
         }
         
         .year-sparkles.right {
-            right: -50px;
+            right: 0;
         }
         
         /* ===== SCROLL DOWN PROMPT ===== */
@@ -318,12 +347,16 @@
             left: 50%;
             transform: translateX(-50%);
             color: var(--primary-blue);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             text-align: center;
             z-index: 100;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
         }
         
         .scroll-prompt.show {
@@ -334,31 +367,29 @@
         
         .scroll-prompt i {
             display: block;
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-top: 10px;
         }
         
         /* ===== CONTENT LAYOUT ===== */
         .content-section {
-            padding: var(--spacing-xl) 0;
+            padding: var(--spacing-lg) 0;
             position: relative;
+            width: 100%;
         }
         
         .content-wrapper {
             display: grid;
             grid-template-columns: 1fr 1.5fr 1fr;
-            gap: var(--spacing-lg);
+            gap: var(--spacing-md);
             align-items: start;
-            max-width: 1400px;
-            margin: 0 auto;
+            width: 100%;
         }
         
         .image-gallery {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-lg);
-            position: sticky;
-            top: var(--spacing-xl);
+            gap: var(--spacing-md);
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 1s 0.5s, transform 1s 0.5s;
@@ -377,6 +408,7 @@
             opacity: 0;
             transform: translateX(-100px);
             transition: opacity 0.8s, transform 0.8s;
+            width: 100%;
         }
         
         .right-gallery .gallery-item {
@@ -390,7 +422,7 @@
         
         .gallery-image {
             width: 100%;
-            height: 300px;
+            height: clamp(200px, 25vw, 300px);
             object-fit: cover;
             transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -404,7 +436,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: var(--spacing-md);
+            padding: var(--spacing-sm);
             background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
             color: white;
             transform: translateY(10px);
@@ -418,14 +450,14 @@
         }
         
         .gallery-caption {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.5vw, 1.3rem);
             font-weight: 600;
             color: var(--primary-gold);
             margin-bottom: 5px;
         }
         
         .gallery-description {
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
             opacity: 0.9;
         }
         
@@ -439,7 +471,7 @@
             background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(25px);
             border-radius: calc(var(--border-radius) + 10px);
-            padding: var(--spacing-xl);
+            padding: var(--spacing-lg);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.15);
             position: relative;
@@ -461,13 +493,15 @@
         }
         
         .greeting-text {
-            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-size: clamp(1rem, 1.8vw, 1.6rem);
             line-height: 1.7;
             color: var(--text-light);
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s, transform 0.8s;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
         
         .greeting-text.visible {
@@ -479,15 +513,16 @@
             color: var(--primary-pink);
             font-weight: 700;
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-size: clamp(1.5rem, 3vw, 2.8rem);
             display: inline-block;
             margin: 0 5px;
             text-shadow: 0 0 15px rgba(255, 107, 139, 0.5);
+            word-break: keep-all;
         }
         
         .greeting-signature {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-size: clamp(1.5rem, 3vw, 2.8rem);
             color: var(--primary-gold);
             text-align: right;
             margin-top: var(--spacing-lg);
@@ -534,13 +569,13 @@
         /* ===== TEST BUTTON ===== */
         .test-button {
             position: fixed;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
             color: white;
             border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
+            padding: 12px 20px;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
             border-radius: 50px;
             cursor: pointer;
             z-index: 200;
@@ -553,6 +588,7 @@
             gap: 10px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
         }
         
         .test-button:hover {
@@ -583,14 +619,15 @@
         /* ===== FOOTER ===== */
         .footer {
             text-align: center;
-            padding: var(--spacing-xl) 0 var(--spacing-lg);
-            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg) 0;
+            margin-top: var(--spacing-lg);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
+            overflow: hidden;
         }
         
         .heart-beat {
@@ -693,19 +730,20 @@
         @media (max-width: 1200px) {
             .content-wrapper {
                 grid-template-columns: 1fr;
-                gap: var(--spacing-xl);
+                gap: var(--spacing-lg);
             }
             
             .image-gallery {
-                position: static;
                 flex-direction: row;
                 justify-content: center;
                 flex-wrap: wrap;
+                position: static;
             }
             
             .gallery-item {
                 flex: 0 0 calc(33.333% - 20px);
                 transform: translateY(50px) !important;
+                min-width: 200px;
             }
             
             .right-gallery .gallery-item {
@@ -717,40 +755,52 @@
             }
         }
         
+        @media (max-width: 992px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
+        
         @media (max-width: 768px) {
             :root {
-                --spacing-md: 25px;
-                --spacing-lg: 40px;
-                --spacing-xl: 50px;
+                --spacing-md: 20px;
+                --spacing-lg: 30px;
+                --spacing-xl: 40px;
             }
             
             .container {
-                padding: var(--spacing-sm);
+                padding: 0 var(--spacing-sm);
             }
             
             .countdown-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: var(--spacing-sm);
+                max-width: 500px;
             }
             
             .countdown-image {
-                width: 150px;
-                height: 150px;
+                width: clamp(120px, 30vw, 180px);
+                height: clamp(120px, 30vw, 180px);
             }
             
             .gallery-item {
-                flex: 0 0 calc(50% - 15px);
-                height: 200px;
+                flex: 0 0 100%;
+                max-width: 400px;
+                margin: 0 auto;
             }
             
             .gallery-image {
-                height: 200px;
+                height: clamp(180px, 40vw, 250px);
             }
             
             .test-button {
-                top: 20px;
-                right: 20px;
-                padding: 10px 20px;
+                top: 15px;
+                right: 15px;
+                padding: 10px 15px;
                 font-size: 0.9rem;
             }
             
@@ -759,19 +809,60 @@
             }
             
             .scroll-prompt {
-                bottom: 70px;
-                font-size: 1.1rem;
+                bottom: 60px;
+                font-size: 1rem;
+                padding: 8px 15px;
             }
             
             .scroll-prompt i {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
+            }
+            
+            .floating-orb {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .countdown-grid {
+                grid-template-columns: 1fr;
+                max-width: 250px;
+            }
+            
+            .countdown-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .gallery-item {
+                height: auto;
+            }
+            
+            .gallery-image {
+                height: 200px;
+            }
+            
+            .greeting-card {
+                padding: var(--spacing-md);
+            }
+            
+            .scroll-prompt {
+                bottom: 70px;
+                font-size: 0.9rem;
+            }
+            
+            .main-title {
+                font-size: clamp(2rem, 7vw, 3rem);
+            }
+            
+            .year-display {
+                font-size: clamp(3rem, 12vw, 5rem);
             }
         }
         
         @media (max-width: 480px) {
             .countdown-grid {
-                grid-template-columns: 1fr;
-                max-width: 250px;
+                max-width: 220px;
             }
             
             .countdown-image {
@@ -780,7 +871,6 @@
             }
             
             .gallery-item {
-                flex: 0 0 100%;
                 height: 180px;
             }
             
@@ -788,13 +878,14 @@
                 height: 180px;
             }
             
-            .greeting-card {
-                padding: var(--spacing-lg);
+            .test-button {
+                padding: 8px 12px;
+                font-size: 0.8rem;
             }
             
             .scroll-prompt {
                 bottom: 80px;
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -826,9 +917,11 @@
     <div class="countdown-page" id="countdown-page">
         <div class="container">
             <div class="countdown-header">
-                <div class="countdown-image">
-                    <div class="countdown-image-glow"></div>
-                    <img src="bye2025.jpg" alt="2025 Memories">
+                <div class="countdown-image-container">
+                    <div class="countdown-image">
+                        <div class="countdown-image-glow"></div>
+                        <img src="bye2025.jpg" alt="2025 Memories" onerror="this.style.display='none'">
+                    </div>
                 </div>
                 <div class="goodbye-text">Bye Bye</div>
                 <div class="year-2025">2025</div>
@@ -875,21 +968,21 @@
                     <!-- Left Gallery for 2026 -->
                     <div class="image-gallery left-gallery">
                         <div class="gallery-item glass-effect" data-delay="0.1">
-                            <img src="wel2026.png" alt="New Beginnings" class="gallery-image">
+                            <img src="wel2026.png" alt="New Beginnings" class="gallery-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMGYwMDMwIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSI+TmV3IEJlZ2lubmluZ3M8L3RleHQ+Cjwvc3ZnPgo='">
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">New Beginnings</div>
                                 <div class="gallery-description">Fresh starts await</div>
                             </div>
                         </div>
                         <div class="gallery-item glass-effect" data-delay="0.3">
-                            <img src="wi1.png" alt="Fireworks 2026" class="gallery-image">
+                            <img src="wi1.png" alt="Fireworks 2026" class="gallery-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMmEwMDY2Ii8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSI+RmlyZXdvcmtzPC90ZXh0Pgo8L3N2Zz4K'>
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">Celebration Fireworks</div>
                                 <div class="gallery-description">Lighting up the sky</div>
                             </div>
                         </div>
                         <div class="gallery-item glass-effect" data-delay="0.5">
-                            <img src="wi.png" alt="Hope" class="gallery-image">
+                            <img src="wi.png" alt="Hope" class="gallery-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjNGQwMGIzIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSI+SG9wZSAgSm95PC90ZXh0Pgo8L3N2Zz4K'>
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">Hope & Joy</div>
                                 <div class="gallery-description">Bright days ahead</div>
@@ -901,30 +994,39 @@
                     <div class="greeting-center">
                         <div class="greeting-card glass-effect-light">
                             <p class="greeting-text">
-                                Welcome, 2026.
-                                           A new year, new hopes, and another chapter to write.
+                                Welcome, 2026. A new year, new hopes, and another chapter to write.
                             </p>
                             
                             <p class="greeting-text">
                                 To The Best friend <span class="highlight-name">Ishika</span>,
                             </p>
                             
-                            
-                            
                             <p class="greeting-text">
-                                May this year be your most extraordinary chapter yet, filled with adventures that become cherished memories and dreams that transform into beautiful reality.</p>
+                                May this year be your most extraordinary chapter yet, filled with adventures that become cherished memories and dreams that transform into beautiful reality.
+                            </p>
                                 
-                                    <p class="greeting-text">I am very thankful. <br>
+                            <p class="greeting-text">
+                                I am very thankful.
+                            </p>
 
-                                <p class="greeting-text">We started as strangers, and somehow, without even trying, we became best friends. In just a few months, you became one of the most important peoples in my life. Even though you’re far away now and I can’t see you or hear your voice, the moments  we spent always close to my heart. <br>
+                            <p class="greeting-text">
+                                We started as strangers, and somehow, without even trying, we became best friends. In just a few months, you became one of the most important peoples in my life. Even though you're far away now and I can't see you or hear your voice, the moments we spent always close to my heart.
+                            </p>
 
-<p class="greeting-text">Those late-night talks, the endless conversations jumping from one random topic to another, laughing, sharing thoughts, and sometimes just listening. Those moments are some of my best memories. Simple talks that meant everything.
+                            <p class="greeting-text">
+                                Those late-night talks, the endless conversations jumping from one random topic to another, laughing, sharing thoughts, and sometimes just listening. Those moments are some of my best memories. Simple talks that meant everything.
+                            </p>
 
-You are truly my best find of 2025. A friendship I didn’t expect but one I’m so thankful for. Distance hasn’t changed our bond, and I believe it never will.</p>
-<p>
- <p class="greeting-text">As we step into 2026, I wish you happiness, peace, success, and everything you’ve been working for. I hope this year brings you good days, calm nights, and reasons to smile often. No matter where life takes us, I hope we stay best friends forever.</p>
+                            <p class="greeting-text">
+                                You are truly my best find of 2025. A friendship I didn't expect but one I'm so thankful for. Distance hasn't changed our bond, and I believe it never will.
+                            </p>
 
-<p class="greeting-text"> I’m grateful for you, always.
+                            <p class="greeting-text">
+                                As we step into 2026, I wish you happiness, peace, success, and everything you've been working for. I hope this year brings you good days, calm nights, and reasons to smile often. No matter where life takes us, I hope we stay best friends forever.
+                            </p>
+
+                            <p class="greeting-text">
+                                I'm grateful for you, always.
                             </p>
                             
                             <div class="greeting-signature">With all my love,</div>
@@ -934,21 +1036,21 @@ You are truly my best find of 2025. A friendship I didn’t expect but one I’m
                     <!-- Right Gallery for 2026 -->
                     <div class="image-gallery right-gallery">
                         <div class="gallery-item glass-effect" data-delay="0.2">
-                            <img src="wi3.png" alt="Horizons" class="gallery-image">
+                            <img src="wi3.png" alt="Horizons" class="gallery-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMGYwMDMwIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSI+TmV3IEhvcml6b25zPC90ZXh0Pgo8L3N2Zz4K'>
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">New Horizons</div>
                                 <div class="gallery-description">Discover what lies ahead</div>
                             </div>
                         </div>
                         <div class="gallery-item glass-effect" data-delay="0.4">
-                            <img src="wi4.png" alt="Nature" class="gallery-image">
+                            <img src="wi4.png" alt="Nature" class="gallery-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMmEwMDY2Ii8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSI+TmF0dXJlPC90ZXh0Pgo8L3N2Zz4K'>
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">Fresh Perspectives</div>
                                 <div class="gallery-description">Seeing the world anew</div>
                             </div>
                         </div>
                         <div class="gallery-item glass-effect" data-delay="0.6">
-                            <img src="wi5.png" alt="Stars" class="gallery-image">
+                            <img src="wi5.png" alt="Stars" class="gallery-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjNGQwMGIzIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSI+U3RhcnM8L3RleHQ+Cjwvc3ZnPgo='>
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">Reach for Stars</div>
                                 <div class="gallery-description">Dream big, achieve bigger</div>
@@ -959,7 +1061,7 @@ You are truly my best find of 2025. A friendship I didn’t expect but one I’m
             </div>
             
             <footer class="footer glass-effect">
-                <p>Created With <span class="heart-beat">❤️</span> By Prime I wish  May your 2026 be filled with wonder and delight</p>
+                <p>Created With <span class="heart-beat">❤️</span> By Prime I wish May your 2026 be filled with wonder and delight</p>
                 <p>Wishing you 365 days of happiness, 52 weeks of success, and 12 months of prosperity!</p>
             </footer>
         </div>
@@ -1449,6 +1551,9 @@ You are truly my best find of 2025. A friendship I didn’t expect but one I’m
             window.addEventListener('resize', () => {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
+                
+                // Reinitialize elements on resize
+                handleScrollAnimations();
             });
         }
         
