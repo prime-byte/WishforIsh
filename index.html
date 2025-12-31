@@ -56,6 +56,21 @@
             background: var(--bg-gradient-2026);
         }
         
+        /* ===== GLASS EFFECTS ===== */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .glass-effect-light {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
         /* ===== COUNTDOWN PAGE STYLES ===== */
         .countdown-page {
             position: fixed;
@@ -78,12 +93,50 @@
             pointer-events: none;
         }
         
+        /* ===== COUNTDOWN HEADER WITH IMAGE ===== */
+        .countdown-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+        }
+        
+        .countdown-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto var(--spacing-md);
+            border: 4px solid var(--primary-gold);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1.5s 0.3s forwards;
+        }
+        
+        .countdown-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .countdown-image-glow {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%);
+            z-index: -1;
+            animation: pulseGlow 3s infinite alternate;
+        }
+        
         .goodbye-text {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             color: var(--primary-gold);
             text-align: center;
-            margin-bottom: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
             opacity: 0;
             animation: fadeInUp 1.5s 0.5s forwards;
             text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
@@ -91,23 +144,23 @@
         
         .year-2025 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(4rem, 10vw, 8rem);
+            font-size: clamp(3.5rem, 8vw, 6rem);
             color: var(--primary-pink);
             text-align: center;
-            margin-bottom: var(--spacing-xl);
+            margin-bottom: var(--spacing-md);
             opacity: 0;
-            animation: fadeInUp 1.5s 1s forwards;
+            animation: fadeInUp 1.5s 0.8s forwards;
             text-shadow: 0 0 40px rgba(255, 107, 139, 0.5);
         }
         
         .countdown-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             color: var(--text-muted);
             text-align: center;
             margin-bottom: var(--spacing-lg);
             opacity: 0;
-            animation: fadeInUp 1.5s 1.5s forwards;
+            animation: fadeInUp 1.5s 1.2s forwards;
         }
         
         .countdown-grid {
@@ -117,7 +170,7 @@
             max-width: 1000px;
             margin: 0 auto;
             opacity: 0;
-            animation: fadeInUp 1s 2s forwards;
+            animation: fadeInUp 1s 1.5s forwards;
         }
         
         .countdown-card {
@@ -498,6 +551,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .test-button:hover {
@@ -533,6 +588,9 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
             font-size: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
         }
         
         .heart-beat {
@@ -543,6 +601,11 @@
         }
         
         /* ===== ANIMATION KEYFRAMES ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -621,6 +684,11 @@
             60% { transform: translateX(-50%) translateY(-10px); }
         }
         
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0.5; }
+        }
+        
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             .content-wrapper {
@@ -665,6 +733,11 @@
                 gap: var(--spacing-sm);
             }
             
+            .countdown-image {
+                width: 120px;
+                height: 120px;
+            }
+            
             .gallery-item {
                 flex: 0 0 calc(50% - 15px);
                 height: 200px;
@@ -701,6 +774,11 @@
                 max-width: 250px;
             }
             
+            .countdown-image {
+                width: 100px;
+                height: 100px;
+            }
+            
             .gallery-item {
                 flex: 0 0 100%;
                 height: 180px;
@@ -735,7 +813,7 @@
     </div>
     
     <!-- Test Button -->
-    <button class="test-button" id="test-transition">
+    <button class="test-button glass-effect" id="test-transition">
         <i class="fas fa-bolt"></i> Test Countdown
     </button>
     
@@ -747,23 +825,30 @@
     <!-- ===== COUNTDOWN PAGE ===== -->
     <div class="countdown-page" id="countdown-page">
         <div class="container">
-            <div class="goodbye-text">Bye Bye</div>
-            <div class="year-2025">2025</div>
-            <h3 class="countdown-title">Countdown to 2026</h3>
+            <div class="countdown-header">
+                <div class="countdown-image">
+                    <div class="countdown-image-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="2025 Memories">
+                </div>
+                <div class="goodbye-text">Bye Bye</div>
+                <div class="year-2025">2025</div>
+                <h3 class="countdown-title">Countdown to 2026</h3>
+            </div>
+            
             <div class="countdown-grid">
-                <div class="countdown-card">
+                <div class="countdown-card glass-effect">
                     <div class="countdown-value" id="days">00</div>
                     <div class="countdown-label">Days</div>
                 </div>
-                <div class="countdown-card">
+                <div class="countdown-card glass-effect">
                     <div class="countdown-value" id="hours">00</div>
                     <div class="countdown-label">Hours</div>
                 </div>
-                <div class="countdown-card">
+                <div class="countdown-card glass-effect">
                     <div class="countdown-value" id="minutes">00</div>
                     <div class="countdown-label">Minutes</div>
                 </div>
-                <div class="countdown-card">
+                <div class="countdown-card glass-effect">
                     <div class="countdown-value" id="seconds">00</div>
                     <div class="countdown-label">Seconds</div>
                 </div>
@@ -789,21 +874,21 @@
                 <div class="content-wrapper">
                     <!-- Left Gallery for 2026 -->
                     <div class="image-gallery left-gallery">
-                        <div class="gallery-item" data-delay="0.1">
+                        <div class="gallery-item glass-effect" data-delay="0.1">
                             <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="New Beginnings" class="gallery-image">
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">New Beginnings</div>
                                 <div class="gallery-description">Fresh starts await</div>
                             </div>
                         </div>
-                        <div class="gallery-item" data-delay="0.3">
+                        <div class="gallery-item glass-effect" data-delay="0.3">
                             <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Fireworks 2026" class="gallery-image">
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">Celebration Fireworks</div>
                                 <div class="gallery-description">Lighting up the sky</div>
                             </div>
                         </div>
-                        <div class="gallery-item" data-delay="0.5">
+                        <div class="gallery-item glass-effect" data-delay="0.5">
                             <img src="https://images.unsplash.com/photo-1492684223066-dd23140edf6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hope" class="gallery-image">
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">Hope & Joy</div>
@@ -814,7 +899,7 @@
                     
                     <!-- Center Greeting for 2026 -->
                     <div class="greeting-center">
-                        <div class="greeting-card">
+                        <div class="greeting-card glass-effect-light">
                             <p class="greeting-text">
                                 The moment has finally arrived! As the clock struck midnight, we welcomed a brand new year filled with infinite possibilities and boundless hope.
                             </p>
@@ -840,21 +925,21 @@
                     
                     <!-- Right Gallery for 2026 -->
                     <div class="image-gallery right-gallery">
-                        <div class="gallery-item" data-delay="0.2">
+                        <div class="gallery-item glass-effect" data-delay="0.2">
                             <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Horizons" class="gallery-image">
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">New Horizons</div>
                                 <div class="gallery-description">Discover what lies ahead</div>
                             </div>
                         </div>
-                        <div class="gallery-item" data-delay="0.4">
+                        <div class="gallery-item glass-effect" data-delay="0.4">
                             <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Nature" class="gallery-image">
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">Fresh Perspectives</div>
                                 <div class="gallery-description">Seeing the world anew</div>
                             </div>
                         </div>
-                        <div class="gallery-item" data-delay="0.6">
+                        <div class="gallery-item glass-effect" data-delay="0.6">
                             <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Stars" class="gallery-image">
                             <div class="gallery-overlay">
                                 <div class="gallery-caption">Reach for Stars</div>
@@ -865,7 +950,7 @@
                 </div>
             </div>
             
-            <footer class="footer">
+            <footer class="footer glass-effect">
                 <p>Created with <span class="heart-beat">❤️</span> for someone extraordinary | May your 2026 be filled with wonder and delight</p>
                 <p>Wishing you 365 days of happiness, 52 weeks of success, and 12 months of prosperity!</p>
             </footer>
@@ -891,6 +976,7 @@
         let transitionTriggered = false;
         let fireworks = [];
         let particles = [];
+        let crackers = [];
         
         // Countdown elements
         const countdownCards = document.querySelectorAll('.countdown-card');
@@ -907,26 +993,33 @@
         const greetingTexts = document.querySelectorAll('.greeting-text');
         const greetingSignature = document.querySelector('.greeting-signature');
         
-        // ===== FIREWORKS CANVAS ANIMATION =====
+        // ===== FIREWORKS & CRACKERS CANVAS ANIMATION =====
         class Particle {
-            constructor(x, y, color) {
+            constructor(x, y, color, isCracker = false) {
                 this.x = x;
                 this.y = y;
                 this.color = color;
                 this.velocity = {
-                    x: (Math.random() - 0.5) * 10,
-                    y: (Math.random() - 0.5) * 10
+                    x: (Math.random() - 0.5) * (isCracker ? 15 : 10),
+                    y: (Math.random() - 0.5) * (isCracker ? 15 : 10)
                 };
                 this.alpha = 1;
                 this.decay = Math.random() * 0.02 + 0.01;
-                this.size = Math.random() * 3 + 1;
+                this.size = Math.random() * (isCracker ? 4 : 3) + 1;
+                this.isCracker = isCracker;
+                this.gravity = isCracker ? 0.1 : 0.05;
             }
             
             update() {
-                this.velocity.y += 0.05;
+                this.velocity.y += this.gravity;
                 this.x += this.velocity.x;
                 this.y += this.velocity.y;
                 this.alpha -= this.decay;
+                
+                // Add some random movement for crackers
+                if (this.isCracker && Math.random() > 0.7) {
+                    this.velocity.x += (Math.random() - 0.5) * 2;
+                }
             }
             
             draw() {
@@ -934,26 +1027,35 @@
                 ctx.globalAlpha = this.alpha;
                 ctx.fillStyle = this.color;
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                
+                if (this.isCracker && Math.random() > 0.5) {
+                    // Draw cracker particles as small rectangles
+                    ctx.fillRect(this.x, this.y, this.size, this.size);
+                } else {
+                    // Draw regular particles as circles
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
                 ctx.restore();
             }
         }
         
         class Firework {
-            constructor(x, y, targetX, targetY) {
+            constructor(x, y, targetX, targetY, isCracker = false) {
                 this.x = x;
                 this.y = y;
                 this.targetX = targetX;
                 this.targetY = targetY;
-                this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
-                this.size = 2;
-                this.speed = 4;
+                this.color = isCracker ? '#ffffff' : `hsl(${Math.random() * 360}, 100%, 60%)`;
+                this.size = isCracker ? 3 : 2;
+                this.speed = isCracker ? 6 : 4;
                 this.velocity = {
                     x: (targetX - x) / 100 * this.speed,
                     y: (targetY - y) / 100 * this.speed
                 };
                 this.exploded = false;
+                this.isCracker = isCracker;
             }
             
             update() {
@@ -972,8 +1074,19 @@
             
             explode() {
                 this.exploded = true;
-                for (let i = 0; i < 100; i++) {
-                    particles.push(new Particle(this.x, this.y, this.color));
+                const particleCount = this.isCracker ? 150 : 100;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    if (this.isCracker) {
+                        crackers.push(new Particle(this.x, this.y, this.color, true));
+                    } else {
+                        particles.push(new Particle(this.x, this.y, this.color));
+                    }
+                }
+                
+                // Create sound effect for crackers
+                if (this.isCracker) {
+                    createCrackerSound();
                 }
             }
             
@@ -987,17 +1100,51 @@
             }
         }
         
-        function createFirework() {
+        function createFirework(isCracker = false) {
             const startX = Math.random() * canvas.width;
             const startY = canvas.height;
             const targetX = Math.random() * canvas.width;
-            const targetY = Math.random() * canvas.height * 0.7;
+            const targetY = Math.random() * canvas.height * (isCracker ? 0.5 : 0.7);
             
-            fireworks.push(new Firework(startX, startY, targetX, targetY));
+            if (isCracker) {
+                fireworks.push(new Firework(startX, startY, targetX, targetY, true));
+            } else {
+                fireworks.push(new Firework(startX, startY, targetX, targetY));
+            }
+        }
+        
+        function createCrackerSound() {
+            // Create a popping sound effect using Web Audio API
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.1);
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.2);
+            } catch (e) {
+                // Fallback for browsers without Web Audio API support
+                console.log("Cracker sound effect would play here");
+            }
         }
         
         function animateFireworks() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw background glow
+            ctx.save();
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.restore();
             
             // Update and draw fireworks
             for (let i = fireworks.length - 1; i >= 0; i--) {
@@ -1019,6 +1166,16 @@
                 }
             }
             
+            // Update and draw crackers
+            for (let i = crackers.length - 1; i >= 0; i--) {
+                crackers[i].update();
+                crackers[i].draw();
+                
+                if (crackers[i].alpha <= 0) {
+                    crackers.splice(i, 1);
+                }
+            }
+            
             requestAnimationFrame(animateFireworks);
         }
         
@@ -1027,7 +1184,7 @@
             transitionOverlay.innerHTML = '';
             
             // Create confetti
-            for (let i = 0; i < 200; i++) {
+            for (let i = 0; i < 300; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti-piece';
                 
@@ -1055,7 +1212,7 @@
             }
             
             // Create burst effects
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 20; i++) {
                 const burst = document.createElement('div');
                 burst.className = 'burst-effect';
                 
@@ -1120,12 +1277,24 @@
                 }, 500);
             }, 1500);
             
-            // Create fireworks
-            for (let i = 0; i < 15; i++) {
+            // Create massive fireworks and crackers
+            for (let i = 0; i < 25; i++) {
                 setTimeout(() => {
-                    createFirework();
-                }, i * 200);
+                    createFirework(i % 3 === 0); // Every 3rd is a cracker
+                }, i * 150);
             }
+            
+            // Continue fireworks in background
+            setTimeout(() => {
+                const fireworksInterval = setInterval(() => {
+                    createFirework(Math.random() > 0.7);
+                }, 800);
+                
+                // Stop after 30 seconds
+                setTimeout(() => {
+                    clearInterval(fireworksInterval);
+                }, 30000);
+            }, 3000);
         }
         
         function revealNewYearElements() {
@@ -1253,8 +1422,12 @@
             // Start fireworks animation
             animateFireworks();
             
-            // Create occasional fireworks
-            setInterval(createFirework, 1500);
+            // Create occasional fireworks in background
+            setInterval(() => {
+                if (!transitionTriggered) {
+                    createFirework();
+                }
+            }, 2000);
             
             // Update countdown every second
             setInterval(updateCountdown, 1000);
